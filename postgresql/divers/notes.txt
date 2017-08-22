@@ -1,0 +1,96 @@
+Pour intialiser une nouvelle instance (un nouveau cluster):
+1. paramétrer la variable systeme SET PGDATA=...
+2. Lancer initdb.exe: le cluster de données sera crée dans le répertoire indiqué par PGDATA
+
+Démarrer une instance:
+pg_ctl.exe -D %PGDATA% -l %BASE_INSTANCE%/logs/journal_applicatif.log start
+#postgres.exe -D H:/postgresql/data/base1
+
+Arrêter une instance:
+pg_ctl.exe -D %PGDATA% -l %BASE_INSTANCE%/logs/journal_applicatif.log stop
+
+Ouvrir un client par defaut
+psql.exe postgres
+
+Créer un tablespace
+CREATE TABLESPACE tbl_test LOCATION ’H:/postgresql/databases/instance1/tablespaces/tbl_test’;
+Altérer un tablespace
+ALTER TABLESPACE tbl_test OWNER TO user_test;
+
+Supprimer un tablespace
+DROP TABLESPACE IF EXISTS tbl_test;
+
+Ouvrir un client sur une base bas_test avecd un user user_test
+psql.exe -d bas_test -U user_test
+
+créer un user
+CREATE ROLE user_test LOGIN PASSWORD 'user_test' CREATEDB ENCRYPTED VALID UNTIL '2020-01-01';
+
+CREATE USER super WITH CREATEDB LOGIN PASSWORD 'super';
+ALTER user user_test WITH SUPERUSER;
+
+créer une base bas_test avec pour propriétaire user_test dans le tablespace tbl_test
+CREATE DATABASE bas_test OWNER user_test TABLESPACE tbl_test;
+
+
+Divers:
+Liste des utilisateurs
+Après avoir ouvert un client: select * from pg_user;
+
+
+
+--------------------------------
+Les étapes pour crééer une nouvelle "configuration"
+1.Recopier un repertoire existant
+2.Vider le contenu du repertoire cluster
+3.dans bin/setclasspath.bat changer les variables:
+3.1.BASE_INSTANCE : variabmle personnelle, pour avoir le reprtoire de base de la configuration
+3.2.PGDATA : variable postgres : indique l'emplacement des données: le répertoire cluster dans le cas présent
+4.Lancer initdb.exe: création du cluster dans le reperoire du même nom.
+5.créer un superuser : createuser.exe : nom/superuser?
+6. créer une base:
+6.1  se connecter: psql.exe postgres
+6.2: créer un tablespace: CREATE TABLESPACE tbl_test LOCATION ’H:/postgresql/databases/instance1/tablespaces/tbl_test’;
+6.2 altérer un tablespace: ALTER TABLESPACE tbl_test OWNER TO user_test;
+6.3 créer une base de données: CREATE DATABASE bas_test OWNER user_test TABLESPACE tbl_test;
+7. insérer un script:
+7.1 psql.exe -d nom_base -U nom user -f chemin_fichier.sql
+
+
+
+
+--------------------------------
+CREATE TABLE table_test (id int, label varchar(20));
+INSERT INTO table_test values (1,'label1');
+INSERT INTO table_test values (2,'label2');
+INSERT INTO table_test values (3,'label3');
+
+
+Connections distantes
+1. Premiere approche: "globale"
+dans postgresql.conf
+listen_addresses = '*'
+ouvre toutes les adresses ip
+dans pg_hba.conf
+sous:
+# IPv4 local connections:
+commenter
+#host    all         all         127.0.0.1/32          trust
+rajouter
+host	  all	        all	        0.0.0.0/0	            md5
+
+Devrait être suffisant; si besoin est
+sous windows 7, pour le parefeu:
+lancer wf.msc 
+sous Pare-feu windows avec fonctions avancées, Règles de traffic entrant
+chercher PostgreSQL Server
+clic droit/propriétés / Protocoles et Port
+Activer la connection
+
+2.Seconde approche: plus fine
+--Définir les ip
+---dans postgresql.conf, lister le ip désirées
+listen_addresses = 'localhost,192.168.1.12' (il faut spécifier localhost si on veut l'utiliser)
+---dans pg_hba.conf , lister les ip
+host    all         all         127.0.0.1/32          trust
+host	  all	        all	        192.168.1.12/0	      md5 

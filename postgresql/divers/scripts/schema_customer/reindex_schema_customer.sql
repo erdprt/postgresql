@@ -1,0 +1,4 @@
+REINDEX TABLE schema_customer.CUS_CUSTOMER; 
+REINDEX TABLE schema_customer.CUS_EMPLOYEE;
+REINDEX TABLE schema_customer.CUS_ADDRESS;
+REINDEX TABLE schema_customer.CUS_STATUS;

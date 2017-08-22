@@ -1,0 +1,22 @@
+CREATE ROLE postgres WITH PASSWORD 'postgres';
+ALTER ROLE postgres WITH SUPERUSER;
+
+SET ROLE postgres;
+
+CREATE ROLE ecriture
+  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+CREATE ROLE lecture
+  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+ CREATE ROLE dba
+  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION; 
+
+CREATE ROLE user_billings WITH LOGIN PASSWORD 'user_billings';
+ALTER ROLE user_billings WITH SUPERUSER; 
+
+/* ------------------------------------------- */
+/* Database MND - Déclaration DSN */
+/* ------------------------------------------- */
+CREATE DATABASE db_billings OWNER user_billings;
+COMMENT ON DATABASE db_billings IS 'Billing database';
+
+GRANT CONNECT ON DATABASE db_billings TO user_billings;

@@ -1,0 +1,26 @@
+H:/postgresql/databases/instance1/cluster
+
+créer un tablespace
+CREATE TABLESPACE tbl_test LOCATION ’H:/postgresql/databases/instance1/tablespaces/tbl_test’;
+
+supprimer un tablespace
+DROP TABLESPACE IF EXISTS tbl_test;
+
+créer un user
+CREATE USER user_test WITH CREATEDB SUPERUSER LOGIN PASSWORD 'user_test' ENCRYPTED VALID UNTIL '2020-01-01';
+
+CREATE USER admin WITH CREATEDB LOGIN PASSWORD 'admin';
+ALTER user user_test WITH SUPERUSER;
+
+créer une base
+CREATE DATABASE bas_test OWNER user_test TABLESPACE tbl_test;
+
+CREATE TABLE table_test (id int, label varchar(20));
+INSERT INTO table_test values (1,'label1');
+INSERT INTO table_test values (2,'label2');
+INSERT INTO table_test values (3,'label3');
+
+COPY SCHEMA_CUSTOMER.CUS_STATUS FROM 'H:/postgresql/databases/instance1/scripts/data/status.csv' WITH DELIMITER as ';' CSV HEADER
+COPY SCHEMA_CUSTOMER.CUS_PERSON FROM 'H:/postgresql/databases/instance1/scripts/data/person.csv' WITH DELIMITER as ';' CSV HEADER
+COPY SCHEMA_CUSTOMER.CUS_EMPLOYEE FROM 'H:/postgresql/databases/instance1/scripts/data/employee.csv' WITH DELIMITER as ';' CSV HEADER
+COPY SCHEMA_CUSTOMER.CUS_ADDRESS FROM 'H:/postgresql/databases/instance1/scripts/data/address.csv' WITH DELIMITER as ';' CSV HEADER

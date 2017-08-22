@@ -1,0 +1,5 @@
+DROP ROLE IF EXISTS ecriture;
+DROP ROLE IF EXISTS lecture;
+DROP ROLE IF EXISTS dba;
+
+DROP USER IF EXISTS postgres;

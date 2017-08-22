@@ -1,0 +1,8 @@
+DROP ROLE IF EXISTS ecriture;
+DROP ROLE IF EXISTS lecture;
+DROP ROLE IF EXISTS dba;
+
+DROP DATABASE IF EXISTS db_billings;
+DROP ROLE IF EXISTS user_billings;
+
+DROP ROLE IF EXISTS postgres;

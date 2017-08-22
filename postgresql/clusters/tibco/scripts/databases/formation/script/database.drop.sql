@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS bas_formation;
+DROP TABLESPACE IF EXISTS tbl_formation;
+DROP ROLE IF EXISTS user_formation;

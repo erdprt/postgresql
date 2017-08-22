@@ -1,0 +1,8 @@
+call scripts.conf.bat %*
+echo 'clean custer' %CLUSTER_NAME%
+
+RMDIR /S /Q %PGDATA%
+RMDIR /S /Q %CLUSTER_LOGS%
+RMDIR /S /Q %TRACES_DIR%
+RMDIR /S /Q %TRASACTIONS_DIR%
+RMDIR /S /Q %TABLESPACES_DIR%

@@ -1,0 +1,34 @@
+SET search_path TO sch_billings;
+
+INSERT INTO ref_billing_status (bil_sta_id,bil_sta_label,bil_stat_desc,tra_created,tra_updated) 
+            VALUES ('VALIDATED','billing validated','billing done and validated',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO ref_billing_status (bil_sta_id,bil_sta_label,bil_stat_desc,tra_created,tra_updated) 
+            VALUES ('VALIDATING','billing validating','billing validating',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);            
+INSERT INTO ref_billing_status (bil_sta_id,bil_sta_label,bil_stat_desc,tra_created,tra_updated)           
+            VALUES ('REJECTED','billing rejected','billing rejected',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+
+INSERT INTO ref_category (cat_id,cat_label,cat_desc,tra_created,tra_updated) 
+            VALUES ('food','food category','food category',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO ref_category (cat_id,cat_label,cat_desc,tra_created,tra_updated) 
+            VALUES ('sofa','sofa category','sofa category',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO ref_category (cat_id,cat_label,cat_desc,tra_created,tra_updated) 
+            VALUES ('soda','soda category','soda category',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO ref_category (cat_id,cat_label,cat_desc,tra_created,tra_updated) 
+            VALUES ('ligth','ligth category','ligth category',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO ref_category (cat_id,cat_label,cat_desc,tra_created,tra_updated) 
+            VALUES ('computer','computer category','computer category',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO ref_category (cat_id,cat_label,cat_desc,tra_created,tra_updated) 
+            VALUES ('printer','printer category','printer category',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+
+INSERT INTO tab_inventory (inv_id,inv_price,inv_available,inv_quantity,cat_id,tra_created,tra_updated) 
+            VALUES (1,100.00,true,1000,'food',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);                      
+INSERT INTO tab_inventory (inv_id,inv_price,inv_available,inv_quantity,cat_id,tra_created,tra_updated) 
+            VALUES (2,1500.00,true,1245,'sofa',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO tab_inventory (inv_id,inv_price,inv_available,inv_quantity,cat_id,tra_created,tra_updated) 
+            VALUES (3,8.00,true,4567,'soda',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO tab_inventory (inv_id,inv_price,inv_available,inv_quantity,cat_id,tra_created,tra_updated) 
+            VALUES (4,23.00,true,1000,'ligth',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO tab_inventory (inv_id,inv_price,inv_available,inv_quantity,cat_id,tra_created,tra_updated) 
+            VALUES (5,100.00,true,1000,'computer',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);                                                
+INSERT INTO tab_inventory (inv_id,inv_price,inv_available,inv_quantity,cat_id,tra_created,tra_updated) 
+            VALUES (6,45.00,true,1000,'printer',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);

@@ -1,0 +1,1 @@
+select relname, seq_tup_read AS NB_LIGNES_LUES, idx_tup_fetch AS NB_LIGNES_FETCH, n_tup_ins AS NB_INSERTION, n_tup_upd AS NB_MODIFICATION, n_tup_del AS NB_SUPPRESSION from pg_stat_all_tables where schemaname=:SCHEMA_NAME_WITH_QUOTE and (seq_tup_read >0 or idx_tup_fetch>0 or n_tup_ins > 0 or  n_tup_upd > 0 or n_tup_del > 0)

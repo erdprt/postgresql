@@ -1,0 +1,14 @@
+LOG:  le système de bases de données a été arrêté à 2013-08-02 13:44:22 CEST
+LOG:  le système de bases de données est prêt pour accepter les connexions
+LOG:  lancement du processus autovacuum
+LOG:  a reçu une demande d'arrêt intelligent
+LOG:  arrêt du processus autovacuum
+LOG:  arrêt en cours
+LOG:  le système de base de données est arrêté
+LOG:  le système de bases de données a été arrêté à 2013-08-02 13:54:01 CEST
+LOG:  le système de bases de données est prêt pour accepter les connexions
+LOG:  lancement du processus autovacuum
+LOG:  a reçu une demande d'arrêt intelligent
+LOG:  arrêt du processus autovacuum
+LOG:  arrêt en cours
+LOG:  le système de base de données est arrêté
